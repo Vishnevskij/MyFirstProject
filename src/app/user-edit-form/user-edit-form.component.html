@@ -1,0 +1,9 @@
+<div class="form" *ngIf="user && mergedUser">
+  <input
+    *ngFor="let field of editFields"
+    [name]="field"
+    [placeholder]="field"
+    [value]="mergedUser[field]"
+    (input)="onInput($event)"
+  />
+</div>

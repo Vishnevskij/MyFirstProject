@@ -1,0 +1,21 @@
+<h3>Users</h3>
+
+<input type="text" [value]="searchValue" (input)="onInput($event)" />
+<button *ngIf="!isSorted" (click)="onSortClick()">Sort</button>
+<button *ngIf="isSorted" (click)="onSortClick()">Cancel Sort</button>
+
+<div class="users-wrapper">
+  <div *ngIf="counter > 0">
+    <app-user
+    *ngFor="let user of usersService.sortedUsers"
+    [user]="user"
+  ></app-user>
+
+  </div>
+
+  <div *ngIf="!isSorted">
+    <app-user *ngFor="let user of searchValue ? usersService.searchResult : usersService.users"
+    [user]="user"></app-user>
+  </div>
+
+</div>
